@@ -252,6 +252,27 @@
       "category": "Comptabilité",
       "done": false,
       "userid": 1
+    },
+    {
+      "task": "Jeter les poubelles",
+      "category": "Rangement",
+      "done": "",
+      "userid": 1,
+      "id": 4
+    },
+    {
+      "task": "Faire une demande de carte vitale",
+      "category": "Administration",
+      "done": true,
+      "userid": 1,
+      "id": 5
+    },
+    {
+      "task": "Préparer un steak",
+      "category": "Cuisine",
+      "done": true,
+      "userid": 2,
+      "id": 6
     }
   ]
 }

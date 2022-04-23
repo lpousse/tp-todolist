@@ -2,11 +2,23 @@
 	<h2 *ngIf="!editmode" class="text-center">Ajouter une tâche pour {{ user.name }}</h2>
 	<h2 *ngIf="editmode" class="text-center">Modifier une tâche pour {{ user.name }}</h2>
 </div>
-<div class="row">
-	<div class="col">
-		<form action="">
-			<label for="taskField">Tâche</label>
-			<input type="text" id="taskField">
+<div class="row m-3 justify-content-center">
+	<div class="col-sm-12 col-md-9 col-xl-6">
+		<form [formGroup]="todoForm" (ngSubmit)="submitForm()">
+			<div class="form-group">
+				<label for="taskField">Tâche</label>
+				<input formControlName="task" type="text" id="taskField" class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="categoryField">Catégorie</label>
+				<input formControlName="category" type="text" id="categoryField" class="form-control">
+			</div>
+			<div class="form-group">
+				<input formControlName="done" type="checkbox" id="doneCheck" class="form-check-input">
+				<label class="form-check-label" for="doneCheck">Réalisé</label>
+			</div>
+			<button type="submit" class="btn btn-primary">Valider</button>
+			<button type="submit" class="btn btn-light" (click)="cancel()">Annuler</button>
 		</form>
 	</div>
 </div>

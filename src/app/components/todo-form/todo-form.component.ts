@@ -39,7 +39,16 @@ export class TodoFormComponent implements OnInit
   {
     this.userService.getUserById(this.userId).subscribe((user: User) => this.user = user);
     if (this.editmode)
-      this.todoService.getTodoById(+<String>this.todoId).subscribe((todo: Todo) => this.todo = todo);
+    {
+      this.todoService.getTodoById(+<String>this.todoId).subscribe((todo: Todo) => {
+        this.todo = todo
+        this.todoForm.setValue({
+          task: todo.task,
+          category: todo.category,
+          done: todo.done
+        })
+      });
+    }
   }
 
   submitForm()
