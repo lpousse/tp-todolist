@@ -1,0 +1,50 @@
+<div class="row">
+	<h2 class="text-center">Détails de l'utilisateur</h2>
+</div>
+<div class="row">
+	<div class="col-md-6 col-sm-12">
+		<p><span class="fw-bold">Nom :</span><br />
+			&nbsp;&nbsp; {{user.name}}</p>
+		<p><span class="fw-bold">Nom d'utilisateur :</span><br />
+			&nbsp;&nbsp; {{user.username}}</p>
+		<p><span class="fw-bold">Email :</span><br />
+			&nbsp;&nbsp; {{user.email}}</p>
+	</div>
+	<div class="col-md-6 col-sm-12">
+		<p><span class="fw-bold">Adresse :</span><br />
+			&nbsp;&nbsp; {{user.address.street}}<br />
+			&nbsp;&nbsp; {{user.address.suite}}<br />
+			&nbsp;&nbsp; {{user.address.zipcode + ' ' + user.address.city}}</p>
+		<p><span class="fw-bold">Téléphone :</span><br />
+			&nbsp;&nbsp; {{user.phone}}</p>
+	</div>
+</div>
+<div class="row">
+	<h2 class="text-center">Tâches</h2>
+</div>
+<div class="row justify-content-center">
+	<div class="col-2 text-end">
+		<label class="form-check-label" for="categorySelect">Catégorie : </label>
+	</div>
+	<div class="col-2">
+		<select class="form-select" id="categorySelect" [value]="selectedCategory" (change)="categoryChange(categorySelect.value)" #categorySelect>
+			<option [value]="ALL_CATEGORIES_LABEL">{{ ALL_CATEGORIES_LABEL }}</option>
+			<option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+		</select>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6 col-sm-12">
+		<h3 class="text-center">Restantes</h3>
+		<app-todolist [todos]="pendingTodos" (todoChange)="loadTodos()"></app-todolist>
+	</div>
+	<div class="col-md-6 col-sm-12">
+		<h3 class="text-center">Complétées</h3>
+		<app-todolist [todos]="doneTodos" (todoChange)="loadTodos()"></app-todolist>
+	</div>
+</div>
+<div class="row">
+	<div class="col text-center">
+		<a class="btn btn-dark" [routerLink]="['/users/' + userId + '/addtodo']">Ajouter une tâche</a>
+	</div>
+</div>
